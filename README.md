@@ -12,3 +12,4 @@ Prerequisites:
 7. Install Missguided app from Play store
 7. Run tests from project root directory with command: nosetests -s --tc-format=python tests.test_add_items
 
+https://youtu.be/oSIurGd0GvI
