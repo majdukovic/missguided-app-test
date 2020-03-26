@@ -14,7 +14,6 @@ class BaseTest:
     All tests classes extend this class
     """
     desired_caps = {
-        'app': '/Users/mateajdukovic/Downloads/Missguided.apk',
         'platformName': 'Android',
         'platformVersion': '10.0',
         'automationName': 'uiautomator2',
