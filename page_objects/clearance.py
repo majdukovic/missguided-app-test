@@ -22,8 +22,16 @@ class ClearancePage(Page):
     good_look_text_button_ios = (MobileBy.XPATH, '//android.widget.TextView[@text="Gold Look Heart Studs"]')
 
     def navigate_to_good_look_element(self):
+        """
+        Navigate to Good Look element
+        :return: None
+        """
         self.swipe_to_element_visible(*getattr(self, 'good_look_text_button_' + self.os), x1=538, y1=1301, x2=538, y2=403, wait_time=350)
 
     def click_good_look_element_button(self):
+        """
+        Click on Good Look element
+        :return: None
+        """
         el = self.wait_for_element_present(*getattr(self, 'good_look_text_button_' + self.os))
         el.click()

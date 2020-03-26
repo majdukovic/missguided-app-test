@@ -22,5 +22,9 @@ class OnboardingPage(Page):
     get_started_button_ios = (MobileBy.ACCESSIBILITY_ID, 'com.poqstudio.app.platform.missguided:id/onboarding_activity_get_started_btn')
     
     def click_get_started_button(self):
+        """
+        Click on Get Started button
+        :return: None
+        """
         el = self.wait_for_element_present(*getattr(self, 'get_started_button_' + self.os))
         el.click()

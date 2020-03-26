@@ -18,7 +18,7 @@ class Page:
     """
     def __init__(self, driver):
         """
-            Constructor
+        Constructor
         """
         self.driver = driver
 
@@ -56,7 +56,7 @@ class Page:
 
     def wait_for_element_present(self, *locator, wait_time=10):
         """
-        Wait 15 seconds for element to be displayed
+        Wait for element to be displayed
         :param locator: Locator that needs to be found
         :param wait_time: Time to wait for the element. 15 seconds by default
         :return: None
@@ -65,33 +65,17 @@ class Page:
         el = WebDriverWait(driver=self.driver, timeout=wait_time, ignored_exceptions=ignored_exceptions).until(lambda s: self.driver.find_element(*locator), message=":".join(locator) + " element not visible")
         return el
 
-    def wait_for_elements_present(self, *locator, wait_time=15):
-        """
-        Wait 15 seconds for elements to be displayed
-        :param locator: Locator that needs to be found
-        :param wait_time: Time to wait for the element. 15 seconds by default
-        :return: None
-        """
-        elements = WebDriverWait(self.driver, wait_time).until(lambda s: self.driver.find_elements(*locator), message=":".join(locator) + " elements not visible")
-        return elements
-
     def swipe_to_element_visible(self, *locator, x1, y1, x2, y2, wait_time):
         """
-        Swipe given coordinates, try to swipe for 5 total attempts
+        Swipe given coordinates until element is visible, try to swipe for maximum of 5 attempts
+        :param locator: dict - element locator
         :param x1: int - x1 coordinate
         :param y1: int - y1 coordinate
         :param x2: int - x2 coordinate
         :param y2: int - y2 coordinate
-        :param locator: dict - element locator
+        :param wait_time: int - time to pause in ms (longer time means slower swipe distance)
         :return: None
         """
-        # el_visible = False
-        # count = 0
-        # while el_visible is not True and count < 5:
-        #     self.driver.swipe(x1, y1, x2, y2)
-        #     el_visible = self.is_element_visible(locator, wait_time=2)
-        #     count += 1
-
         el_visible = False
         count = 0
         while el_visible is not True and count < 5:

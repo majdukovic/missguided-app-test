@@ -18,6 +18,13 @@ class RegisterLoginPage(Page):
     # Android
     sign_in_button_android = (MobileBy.ID, 'com.poqstudio.app.platform.missguided:id/content_block_login_view_sign_in_button')
 
+    # iOS
+    sign_in_button_ios = (MobileBy.ID, 'com.poqstudio.app.platform.missguided:id/content_block_login_view_sign_in_button')
+
     def is_displayed_sign_in_button(self):
+        """
+        Check if element is displayed
+        :return: boolean - True if element is displayed, otherwise return False
+        """
         sign_in_button_displayed = self.is_element_visible(*getattr(self, 'sign_in_button_' + self.os))
         return sign_in_button_displayed

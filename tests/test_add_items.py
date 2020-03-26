@@ -51,9 +51,12 @@ class TestAddItems(BaseTest):
         product_page.select_size(size='one')
         header_page.click_bag_button()
         product_title = shopping_bag_page.get_product_title()
+        ''' Verify correct product title is displayed '''
         assert_true(product_title == 'Gold Look Heart Studs', msg="Incorrect product title displayed.")
         product_size_and_color = shopping_bag_page.get_product_size_and_color()
+        ''' Verify correct size and color is displayed '''
         assert_true(product_size_and_color == 'ONE Gold', msg="Incorrect size and color displayed.")
         shopping_bag_page.click_checkout_button()
+        ''' Verify Sign in button is displayed '''
         assert_true(register_login_page.is_displayed_sign_in_button(), msg="Sign in button is not displayed.")
         print("Sign in button is displayed.")

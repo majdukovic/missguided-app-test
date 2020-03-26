@@ -31,11 +31,11 @@ class HeaderPage(Page):
     sale_button_ios = (MobileBy.XPATH, '//android.widget.TextView[@text="SALE"]')
     bag_button_ios = (MobileBy.ACCESSIBILITY_ID, 'Bag')
 
-    def click_more_info_button(self):
-        el = self.wait_for_element_present(*getattr(self, 'more_info_button_' + self.os))
-        el.click()
-
     def click_menu_button(self):
+        """
+        Click on Menu button
+        :return: None
+        """
         el = self.wait_for_element_present(*getattr(self, 'menu_button_' + self.os))
         el.click()
 
@@ -45,9 +45,17 @@ class HeaderPage(Page):
         self.driver.swipe(start_x=320, start_y=1479, end_x=320, end_y=447)
 
     def click_clearance_button(self):
+        """
+        Click on Clearance button
+        :return: None
+        """
         el = self.wait_for_element_present(*getattr(self, 'clearance_button_' + self.os))
         el.click()
 
     def click_bag_button(self):
+        """
+        Click on Bag button
+        :return: None
+        """
         el = self.wait_for_element_present(*getattr(self, 'bag_button_' + self.os))
         el.click()
