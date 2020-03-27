@@ -1,0 +1,412 @@
+{
+	"info": {
+		"_postman_id": "8fe6a5f4-1851-4952-8c3c-b903c965a392",
+		"name": "Missguided app requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Successful Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57e36603-4326-40da-a472-ca10f96d3cd2",
+						"exec": [
+							"pm.test(\"Status code is 200 OK\", function () { ",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Email, first and last name are correct, message is correct.\", function () {",
+							"    pm.expect(jsonData.email).to.eql('info@random1.com');",
+							"    pm.expect(jsonData.firstName).to.eql('jude');",
+							"    pm.expect(jsonData.lastName).to.eql('jude');",
+							"    pm.expect(jsonData.message).to.eql('Authentication complete.');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"jude1234\",\n\t\"username\": \"info@random1.com\"\n}"
+				},
+				"url": {
+					"raw": "http://missguided.poq.io/Account/Login/76/cc529790-d34b-4bc5-8bb6-03a6608a1706",
+					"protocol": "http",
+					"host": [
+						"missguided",
+						"poq",
+						"io"
+					],
+					"path": [
+						"Account",
+						"Login",
+						"76",
+						"cc529790-d34b-4bc5-8bb6-03a6608a1706"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incorrect Username Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57e36603-4326-40da-a472-ca10f96d3cd2",
+						"exec": [
+							"pm.test(\"Status code is 400 Bad Request\", function () { pm.response.to.have.status(400); });",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Message is Login Failed\", function () {",
+							"    pm.expect(jsonData.message).to.eql('Login Failed: Wrong username or password');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"jude1234\",\n\t\"username\": \"info@random5.com\"\n}"
+				},
+				"url": {
+					"raw": "http://missguided.poq.io/Account/Login/76/cc529790-d34b-4bc5-8bb6-03a6608a1706",
+					"protocol": "http",
+					"host": [
+						"missguided",
+						"poq",
+						"io"
+					],
+					"path": [
+						"Account",
+						"Login",
+						"76",
+						"cc529790-d34b-4bc5-8bb6-03a6608a1706"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incorrect Password Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57e36603-4326-40da-a472-ca10f96d3cd2",
+						"exec": [
+							"pm.test(\"Status code is 400 Bad Request\", function () { pm.response.to.have.status(400); });",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Message is Login Failed\", function () {",
+							"    pm.expect(jsonData.message).to.eql('Login Failed: Wrong username or password');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"jude\",\n\t\"username\": \"info@random1.com\"\n}"
+				},
+				"url": {
+					"raw": "http://missguided.poq.io/Account/Login/76/cc529790-d34b-4bc5-8bb6-03a6608a1706",
+					"protocol": "http",
+					"host": [
+						"missguided",
+						"poq",
+						"io"
+					],
+					"path": [
+						"Account",
+						"Login",
+						"76",
+						"cc529790-d34b-4bc5-8bb6-03a6608a1706"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Successful Registration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57e36603-4326-40da-a472-ca10f96d3cd2",
+						"exec": [
+							"pm.test(\"Status code is 200 Bad Request\", function () { pm.response.to.have.status(200); });",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Email, first and last name are correct\", function () {",
+							"    pm.expect(jsonData.email).to.eql('randomuser@random.com');",
+							"    pm.expect(jsonData.firstName).to.eql('judejude');",
+							"    pm.expect(jsonData.lastName).to.eql('beatles');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"isPromotion\": false,\n\t\"credentials\": {\n\t\t\"password\": \"beatles1234\",\n\t\t\"username\": \"randomuser@random.com\"\n\t},\n\t\"newsletterSignUp\": false,\n\t\"profile\": {\n\t\t\"isPromotion\": false,\n\t\t\"accessToken\": \"\",\n\t\t\"cookies\": [],\n\t\t\"email\": \"randomuser@random.com\",\n\t\t\"employeeId\": \"\",\n\t\t\"encryptedPassword\": \"\",\n\t\t\"expressCheckout\": false,\n\t\t\"firstName\": \"judejude\",\n\t\t\"isBagMerged\": false,\n\t\t\"isBagMergedMessage\": \"\",\n\t\t\"lastName\": \"beatles\",\n\t\t\"loyaltyCardNumber\": \"\",\n\t\t\"newsletterSignUp\": false,\n\t\t\"phone\": \"\",\n\t\t\"refreshToken\": \"\",\n\t\t\"storeId\": \"\",\n\t\t\"username\": \"\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://missguided.poq.io/Account/register/76/8fe3173d-e66f-4976-971e-033ecd2dc817",
+					"protocol": "http",
+					"host": [
+						"missguided",
+						"poq",
+						"io"
+					],
+					"path": [
+						"Account",
+						"register",
+						"76",
+						"8fe3173d-e66f-4976-971e-033ecd2dc817"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unsuccessful Registration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57e36603-4326-40da-a472-ca10f96d3cd2",
+						"exec": [
+							"pm.test(\"Status code is 400 Bad Request\", function () { pm.response.to.have.status(400); });",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Email already exists\", function () {",
+							"    pm.expect(jsonData.message).to.eql('An account with this email address already exists.');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"isPromotion\": false,\n\t\"credentials\": {\n\t\t\"password\": \"beatles1234\",\n\t\t\"username\": \"randomuser@random.com\"\n\t},\n\t\"newsletterSignUp\": false,\n\t\"profile\": {\n\t\t\"isPromotion\": false,\n\t\t\"accessToken\": \"\",\n\t\t\"cookies\": [],\n\t\t\"email\": \"randomuser@random.com\",\n\t\t\"employeeId\": \"\",\n\t\t\"encryptedPassword\": \"\",\n\t\t\"expressCheckout\": false,\n\t\t\"firstName\": \"judejude\",\n\t\t\"isBagMerged\": false,\n\t\t\"isBagMergedMessage\": \"\",\n\t\t\"lastName\": \"beatles\",\n\t\t\"loyaltyCardNumber\": \"\",\n\t\t\"newsletterSignUp\": false,\n\t\t\"phone\": \"\",\n\t\t\"refreshToken\": \"\",\n\t\t\"storeId\": \"\",\n\t\t\"username\": \"\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://missguided.poq.io/Account/register/76/8fe3173d-e66f-4976-971e-033ecd2dc817",
+					"protocol": "http",
+					"host": [
+						"missguided",
+						"poq",
+						"io"
+					],
+					"path": [
+						"Account",
+						"register",
+						"76",
+						"8fe3173d-e66f-4976-971e-033ecd2dc817"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unsuccessful Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57e36603-4326-40da-a472-ca10f96d3cd2",
+						"exec": [
+							"pm.test(\"Status code is 401 Unauthorized\", function () { pm.response.to.have.status(401); });",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Email, first and last name are correct\", function () {",
+							"    pm.expect(jsonData.success).to.eql(false);",
+							"    pm.expect(jsonData.error).to.eql('access key not provided');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer_ids\": {\n\t\t\"email_id\": \"a71ad4ca7deb962baa7779f52a2655de47e959fc230bde82dddc7747be227b85\",\n\t\t\"cookie\": \"06f34e72-fb60-4ce2-8c3a-881ea4ff742b\"\n\t},\n\t\"properties\": {\n\t\t\"userId\": \"948518e7-ad5f-44b4-af61-36f5c9aef7c8\"\n\t},\n\t\"timestamp\": 1.585313441E9,\n\t\"event_type\": \"logout\"\n}"
+				},
+				"url": {
+					"raw": "http://api-analytics.missguided.com/track/v2/projects/1a13834a-88a7-11e7-a6e4-305a3a75dd9b/customers/events",
+					"protocol": "http",
+					"host": [
+						"api-analytics",
+						"missguided",
+						"com"
+					],
+					"path": [
+						"track",
+						"v2",
+						"projects",
+						"1a13834a-88a7-11e7-a6e4-305a3a75dd9b",
+						"customers",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57e36603-4326-40da-a472-ca10f96d3cd2",
+						"exec": [
+							"pm.test(\"Status code is 200 Bad Request\", function () { pm.response.to.have.status(200); });",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"ID, Title and price information is correct\", function () {",
+							"    pm.expect(jsonData.id).to.eql(4839805);",
+							"    pm.expect(jsonData.title).to.eql('Black Basic Midi T Shirt Dress');",
+							"    pm.expect(jsonData.price).to.eql(12.0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://missguided.poq.io/products/detail/76/4839805?poqUserId=9898cf9a-4a20-43b8-ba3b-609901281c76&externalId=1056502",
+					"protocol": "http",
+					"host": [
+						"missguided",
+						"poq",
+						"io"
+					],
+					"path": [
+						"products",
+						"detail",
+						"76",
+						"4839805"
+					],
+					"query": [
+						{
+							"key": "poqUserId",
+							"value": "9898cf9a-4a20-43b8-ba3b-609901281c76"
+						},
+						{
+							"key": "externalId",
+							"value": "1056502"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
