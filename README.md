@@ -21,3 +21,5 @@ Steps to execute tests with Postman:
 2. Import Postman collection from "postman_tests" directory
 3. Click Send request
 4. View results from "Test Results" tab
+
+![](https://media.giphy.com/media/VDMF41fANZEeYztoCj/giphy.gif)
