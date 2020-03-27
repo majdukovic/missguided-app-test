@@ -1,8 +1,10 @@
 # missguided-app-test
 
-This repository contains test for adding product to the bag for Missguided app
+This repository contains
+ - test for adding product to the bag for Missguided app using Appium and Android
+ - tests for Login/Logout/Registration/Viewing product details with Postman
 
-Steps:
+Steps to execute test with Android and Appium:
 1. Setup Appium
 2. Install PyCharm
 3. Install Python 3.6.8
@@ -13,3 +15,9 @@ Steps:
 7. Run tests from project root directory with command: nosetests -s --tc-format=python tests.test_add_items
 
 Video of test run: https://youtu.be/oSIurGd0GvI
+
+Steps to execute tests with Postman:
+1. Install Postman
+2. Import Postman collection from "postman_tests" directory
+3. Click Send request
+4. View results from "Test Results" tab
