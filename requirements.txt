@@ -12,7 +12,7 @@ nose-testconfig==0.10
 nose-xunitmp==0.4.0
 parse==1.15.0
 parse-type==0.5.2
-requests==2.20.1
+requests==2.33.0
 selenium==3.141.0
 six==1.14.0
 urllib3==1.24.3
